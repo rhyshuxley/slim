@@ -12,8 +12,9 @@ return function (ContainerBuilder $containerBuilder) {
     $containerBuilder->addDefinitions([
         SettingsInterface::class => function () {
             return new Settings([
+                'name' => 'Rhys\' Slim App',
                 'displayErrorDetails' => true, // Should be set to false in production
-                'logError'            => false,
+                'logError'            => true,
                 'logErrorDetails'     => false,
                 'logger' => [
                     'name' => 'slim-app',
