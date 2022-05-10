@@ -12,6 +12,6 @@ return function (App $app) {
 
     $app->addErrorMiddleware($settings->get('displayErrorDetails'), $settings->get('logError'), $settings->get('logErrorDetails'));
     $app->add(SessionMiddleware::class);
-    $app->add(BeforeMiddleware::class);
-    $app->add(AfterMiddleware::class);
+    // $app->add(BeforeMiddleware::class);
+    // $app->add(AfterMiddleware::class);
 };

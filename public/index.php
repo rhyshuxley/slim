@@ -18,6 +18,9 @@ $app = AppFactory::create();
 $middleware = require __DIR__ . '/../app/middleware.php';
 $middleware($app);
 
+$views = require __DIR__ . '/../app/views.php';
+$views($app);
+
 $routes = require __DIR__ . '/../app/routes.php';
 $routes($app);
 

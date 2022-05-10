@@ -9,6 +9,7 @@ use Psr\Http\Message\ServerRequestInterface as Request;
 use Psr\Http\Message\ServerRequestInterface as RequestInterface;
 use Slim\App;
 use Slim\Interfaces\RouteCollectorProxyInterface as Group;
+use Slim\Routing\RouteCollectorProxy;
 
 return function (App $app) {
     $app->options('/{routes:.*}', function (Request $request, Response $response) {
@@ -32,9 +33,14 @@ return function (App $app) {
         return $response;
     });
     
-    $app->get('/user/{name}', function (RequestInterface $request, ResponseInterface $response, $args) {
-        $name = $args['name'];
-        $response->getBody()->write("Hello, $name");
-        return $response;
-    });
+    $container = $app->getContainer();
+
+    $app->group('', function (RouteCollectorProxy $view) {
+        $view->get('/views/{name}', function ($request, $response, $args) {
+            $view = 'example.twig';
+            $name = $args['name'];
+
+            return $this->get('view')->render($response, $view, compact('name'));
+        });
+    })->add($container->get('viewMiddleware'));
 };
