@@ -25,6 +25,12 @@ return function (ContainerBuilder $containerBuilder) {
                     'path' => __DIR__ . '/../src/Views',
                     'settings' => ['cache' => false],
                 ],
+                'connection' => [
+                    'host' => 'slim_db_1',
+                    'dbname' => 'db',
+                    'dbuser' => 'user',
+                    'dbpass' => 'secret',
+                ],
             ]);
         }
     ]);

@@ -36,9 +36,9 @@ services:
             - my-db:/var/lib/mysql
 
     slim:
-        image: php:8-alpine
+        image: daijie/php7-alpine
         working_dir: /var/www
-        command: php -S 0.0.0.0:8080 -t public
+        command: composer install && php -S 0.0.0.0:8080 -t public
         environment:
             docker: "true"
         ports:
